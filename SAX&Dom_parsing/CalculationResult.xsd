@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Analyser" type="AnalyserType"/>
+  <xs:complexType name="dataPointType">
+    <xs:sequence>
+      <xs:element name="x">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="1.1"/>
+            <xs:enumeration value="2.2"/>
+            <xs:enumeration value="3.3"/>
+            <xs:enumeration value="4.4"/>
+            <xs:enumeration value="5.5"/>
+            <xs:enumeration value="6.6"/>
+            <xs:enumeration value="7.7"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="y">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="1.01"/>
+            <xs:enumeration value="2.3"/>
+            <xs:enumeration value="3.05"/>
+            <xs:enumeration value="4.28"/>
+            <xs:enumeration value="5.75"/>
+            <xs:enumeration value="6.48"/>
+            <xs:enumeration value="7.84"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="date" use="optional"/>
+  </xs:complexType>
+  <xs:complexType name="dataTableType">
+    <xs:sequence>
+      <xs:element type="dataPointType" name="dataPoint"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="lineType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:attribute type="xs:string" name="b"/>
+        <xs:attribute type="xs:string" name="k"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  <xs:complexType name="AnalyserType">
+    <xs:sequence>
+      <xs:element type="dataTableType" name="dataTable" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="lineType" name="line"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

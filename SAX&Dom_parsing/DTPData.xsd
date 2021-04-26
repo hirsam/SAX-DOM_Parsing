@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Dtp" type="DtpType"/>
+  <xs:complexType name="DtpType">
+    <xs:choice maxOccurs="unbounded" minOccurs="0">
+      <xs:element type="xs:string" name="regName"/>
+      <xs:element type="xs:string" name="district"/>
+      <xs:element type="xs:string" name="COORD_L"/>
+      <xs:element name="COORD_W">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="45.468882"/>
+            <xs:enumeration value="Российская Федерация, Краснодарский край"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:choice>
+  </xs:complexType>
+</xs:schema>
